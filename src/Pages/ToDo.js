@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Tasks from './Tasks';
 
 const ToDo = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [tasks, setTasks]=useState([])
+    const { register, formState: { errors }, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         console.log(data);
+        const url = 'https://safe-escarpment-62914.herokuapp.com/tasks';
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(data)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+           console.log(result);
+           fetch('https://safe-escarpment-62914.herokuapp.com/tasks')
+           .then(res=>res.json())
+           .then(data=>setTasks(data))
+           reset()
+        })
+  
+    }
+
+    const handleDelete = id =>{
+            const url = `https://safe-escarpment-62914.herokuapp.com/tasks/${id}`;
+                fetch(url,{
+                    method:"DELETE"
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data);
+                    const remaining = tasks.filter(service => service._id !== id);
+                setTasks(remaining);
+                })
+        
     }
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -48,7 +81,12 @@ const ToDo = () => {
                     </div>
                     
                     <input className='btn w-full max-w-xs text-white' type="submit" value="add" />
-                </form>   
+                    
+                </form>  
+                <div className='my-2'>
+                        {tasks.map(task=><Tasks task={task} handleDelete={handleDelete} key={task._id}></Tasks>
+                        )}
+                    </div> 
             </div>
         </div>
     </div> 

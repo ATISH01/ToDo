@@ -4,23 +4,15 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_API_KEY,
-//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-//   projectId: process.env.REACT_APP_PROJECT_ID,
-//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-//   appId: process.env.REACT_APP_APP_ID,
-// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBvoZQbJPojCyGh0YGZeDDivbWZ0lHY7uA",
-    authDomain: "doctors-portal-413f7.firebaseapp.com",
-    projectId: "doctors-portal-413f7",
-    storageBucket: "doctors-portal-413f7.appspot.com",
-    messagingSenderId: "743552789481",
-    appId: "1:743552789481:web:bcc614307a3e9c6a69f978"
-  };
+  apiKey: "AIzaSyBU3trZoG1DQVqoW3Io9a5pKhLQjGCLtMM",
+  authDomain: "todo-3f02c.firebaseapp.com",
+  projectId: "todo-3f02c",
+  storageBucket: "todo-3f02c.appspot.com",
+  messagingSenderId: "373302119400",
+  appId: "1:373302119400:web:abe8a126d84db8379db25d"
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
