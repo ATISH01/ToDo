@@ -21,21 +21,33 @@ const ToDo = () => {
                             type="text"
                             placeholder="Your task"
                             className="input input-bordered w-full max-w-xs"
-                            {...register("email", {
+                            {...register("task", {
                                 required: {
                                     value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid Email'
+                                    message: 'Task is Required'
                                 }
                             })}
                         />
+                        <div className='my-6'>
+                            <label className="label">
+                            <span className="label-text">Task Description</span>
+                        </label>
+                        <textarea
+                            type="text"
+                            placeholder="Your task"
+                            className="input input-bordered w-full max-w-xs "
+                            {...register("description", {
+                                required: {
+                                    value: true,
+                                    message: 'Description is Required'
+                                }
+                            })}
+                        />
+                        </div>
                         
                     </div>
                     
-                    <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+                    <input className='btn w-full max-w-xs text-white' type="submit" value="add" />
                 </form>   
             </div>
         </div>
